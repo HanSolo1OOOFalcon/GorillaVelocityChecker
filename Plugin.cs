@@ -17,19 +17,11 @@ namespace GorillaVelocityChecker
 		static TextMeshPro veloText;
         static Renderer cooliCoolRenderer;
 
-        void OnEnable()
-		{
-			HarmonyPatches.ApplyHarmonyPatches();
-		}
-
-		void OnDisable()
-		{
-			HarmonyPatches.RemoveHarmonyPatches();
-		}
-
 		void OnGameInitialized(object sender, EventArgs e) { }
         void Start()
-		{
+        {
+            HarmonyPatches.ApplyHarmonyPatches();
+
             veloObj = GameObject.CreatePrimitive(PrimitiveType.Quad);
             veloObj.name = "Velocity Object Self";
             veloObj.transform.SetParent(GTPlayer.Instance.headCollider.transform, worldPositionStays: false);
